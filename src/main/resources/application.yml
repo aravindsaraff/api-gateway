@@ -1,0 +1,47 @@
+spring:
+  async:
+    deferred:
+      timeout: 600000
+  application:
+    name: reactive-sample
+
+management:
+# context-path: "/monitor"
+  endpoints:
+    web:
+      base-path: "/monitor"
+      path-mapping:
+        health: status
+      cors:
+        allowed-origins: true
+  endpoint:
+    health: #testing out
+      show-details: always
+
+#Not required in Spring Boot 2.0+
+#  enabled: true
+#  sensitive: false
+# By default it is enabled in Spring Boot 2.0+
+  #info:
+   # enabled: true
+
+executorservice:
+  threads:
+    minSize: 25
+    maxSize: 150
+    idleTimeSeconds: 60
+  queue:
+    maxSize: 10000
+#AsyncTemplate  settings, in milliseconds
+http:
+  async:
+    tomcat:
+      timeout: 120000
+    connect:
+      timeout: 120000
+      requestTimeout: 5000
+      readTimeout: 120000
+
+encryption:
+  password: asaraffr0cks!
+
